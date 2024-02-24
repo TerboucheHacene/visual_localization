@@ -1,0 +1,94 @@
+[tool.poetry]
+name = "svl"
+version = "0.1.0"
+description = ""
+authors = ["TERBOUCHE Hacene <hacene.terbouche@gmail.com>"]
+readme = "README.md"
+packages = [ { include = "svl", from = "src" } ]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+torch = { version="^1.13.0", extras=["cuda116"] }
+torchvision = { version="^0.14", extras=["cuda116"] }
+opencv-python = "^4.9.0.80"
+
+
+[tool.poetry.group.dev.dependencies]
+ipdb = "^0.13"
+wandb = "^0.13.5"
+matplotlib = "^3.6.2"
+poethepoet = "^0.16.4"
+ipywidgets = "^8.0.4"
+jupyterlab = "^3.6.1"
+seaborn = "^0.12.2"
+tensorboard = "^2.15.0"
+tensorboardx = "^2.6.2.2"
+rich = "^13.6.0"
+plotly = "^5.18.0"
+
+
+[tool.poetry.group.lint.dependencies]
+black = {extras = ["jupyter"], version = "^23.7.0"}
+flake8 = "^5.0"
+isort = "^5.10"
+mypy = ">=0.991"
+pre-commit = "^2.16"
+
+[tool.poetry.group.tests.dependencies]
+pytest = "^7.1"
+pytest-cov = "^3.0"
+pytest-mock = "^3.8"
+
+
+[tool.poetry.group.docs.dependencies]
+Sphinx = ">=5.1"
+myst-nb = "^0.16"
+sphinx-autoapi = ">=1.8"
+sphinx-rtd-theme = ">=1.0"
+
+[tool.poetry.scripts]
+scholarsense = "scholar_sense.main:app"
+
+[tool.black]
+target-version = ['py39']
+line_length = 89
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+)
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 89
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+
+[tool.semantic_release]
+version_toml = "pyproject.toml:tool.poetry.version"
+# to track and update version in other files:
+# version_variable = ["some/file:__version__", ...]
+branch = "main"
+changelog_file = "CHANGELOG.md"
+build_command = "pip install poetry && poetry build"
+dist_path = "dist/"
+upload_to_pypi = false
+remove_dist = false
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -11,6 +11,8 @@ python = "^3.9"
 torch = { version="^1.13.0", extras=["cuda116"] }
 torchvision = { version="^0.14", extras=["cuda116"] }
 opencv-python = "^4.9.0.80"
+tqdm = "^4.66.2"
+scipy = "^1.13.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -25,6 +27,7 @@ tensorboard = "^2.15.0"
 tensorboardx = "^2.6.2.2"
 rich = "^13.6.0"
 plotly = "^5.18.0"
+rasterio = "^1.3.9"
 
 
 [tool.poetry.group.lint.dependencies]

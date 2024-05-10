@@ -10,9 +10,9 @@ packages = [ { include = "svl", from = "src" } ]
 python = "^3.9"
 torch = { version="^1.13.0", extras=["cuda116"] }
 torchvision = { version="^0.14", extras=["cuda116"] }
-opencv-python = "^4.9.0.80"
 tqdm = "^4.66.2"
 scipy = "^1.13.0"
+opencv-python = "4.5.5.64"
 
 
 [tool.poetry.group.dev.dependencies]

@@ -138,7 +138,7 @@ class QueryProcessor:
 
         elif self.camera_model is not None and self.satellite_resolution is not None:
             new_size = self.compute_resize_shape(
-                self.camera_model, image.geo_point.altitude, self.satellite_resolution
+                self.camera_model, query.geo_point.altitude, self.satellite_resolution
             )
             resized_image = cv2.resize(image, new_size, interpolation=cv2.INTER_AREA)
             query.image = resized_image
